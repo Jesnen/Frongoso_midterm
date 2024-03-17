@@ -1,0 +1,74 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @owner %>
+<h4><center>List of Vehicles</center></h4> 
+
+<center>
+<table style="border-collapse: collapse; width: 80%; margin-bottom: 20px;">
+  <thead> 
+    <tr style="background-color: #f2f2f2;">
+      <td style="border: 1px solid #dddddd;"><strong>Vehicle Type</strong></td>
+      <td style="border: 1px solid #dddddd;"><strong>Model</strong></td>
+      <td style="border: 1px solid #dddddd;"><strong>Color</strong></td>
+      <td style="border: 1px solid #dddddd;"><strong>Serial Number</strong></td>
+      <td style="border: 1px solid #dddddd;"><strong>Purchase Price</strong></td>
+      <td style="border: 1px solid #dddddd;"><strong>Purchase Date</strong></td>
+      <td style="border: 1px solid #dddddd;"><strong>Actions</strong></td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @owner.vehicles.each do |vehicle| %>
+      <tr style="background-color: #ffffff;">
+        <td style="border: 1px solid #dddddd;"><%= vehicle.vehicle_type %></td>
+        <td style="border: 1px solid #dddddd;"><%= vehicle.model %></td>
+        <td style="border: 1px solid #dddddd;"><%= vehicle.color %></td>
+        <td style="border: 1px solid #dddddd;"><%= vehicle.serial_number %></td>
+        <td style="border: 1px solid #dddddd;"><%= vehicle.purchase_price %></td>
+        <td style="border: 1px solid #dddddd;"><%= vehicle.purchase_date %></td>
+        <td style="border: 1px solid #dddddd;">
+          <%= link_to "Show", vehicle_path(vehicle) %> |
+          <%= link_to "Edit", edit_vehicle_path(vehicle) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</center>
+<h4><center>List of Properties</center></h4> 
+<center>
+<table style="border-collapse: collapse; width: 80%; margin-bottom: 20px;">
+  <thead> 
+    <tr style="background-color: #f2f2f2;">
+      <td style="border: 1px solid #dddddd;"><strong>Property Type</strong></td>
+      <td style="border: 1px solid #dddddd;"><strong>Description</strong></td>
+      <td style="border: 1px solid #dddddd;"><strong>Location</strong></td>
+      <td style="border: 1px solid #dddddd;"><strong>Purchase Price</strong></td>
+      <td style="border: 1px solid #dddddd;"><strong>Purchase Date</strong></td>
+      <td style="border: 1px solid #dddddd;"><strong>Actions</strong></td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @owner.properties.each do |property| %>
+      <tr style="background-color: #ffffff;">
+        <td style="border: 1px solid #dddddd;"><%= property.property_type %></td>
+        <td style="border: 1px solid #dddddd;"><%= property.description %></td>
+        <td style="border: 1px solid #dddddd;"><%= property.location %></td>
+        <td style="border: 1px solid #dddddd;"><%= property.purchase_price %></td>
+        <td style="border: 1px solid #dddddd;"><%= property.purchase_date %></td>
+        <td style="border: 1px solid #dddddd;">
+          <%= link_to "Show", property_path(property) %> |
+          <%= link_to "Edit", edit_property_path(property) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</center>
+<center>
+<div>
+  <%= link_to "Edit this owner", edit_owner_path(@owner) %> |
+  <%= link_to "Back to owners", owners_path %>
+
+  <%= button_to "Destroy this owner", @owner, method: :delete %>
+</div>
+</center>
